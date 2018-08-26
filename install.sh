@@ -19,10 +19,11 @@ format_disk () {
   local BOOT_PART="${DEVICE}1"
   local CRYPTED_PART="${DEVICE}2"
   cryptsetup luksFormat -c aes-xts-plain64 -s 512 "${CRYPTED_PART}"
-  crypsetup open "${CRYPTED_PART}" system
-  mkfs.ext4 -L system /dev/mapper/system
+  crypsetup open "${CRYPTED_PART}" cryptroot
+  mkfs.ext4 -L system /dev/mapper/cryptroot
   mkfs.fat -F32 "${DEVICE}1"
-  mount /dev/mapper/system /mnt
+  mount /dev/disk/by-label/system /mnt
+  mkdir /mnt/boot
   mount ${BOOT_PART} /mnt/boot
 }
 
