@@ -4,7 +4,7 @@
   services = {
     openvpn.servers = {
       scaleway = {
-        config = '' config /etc/nixos/vpn/vpn-UDP4-3007-mvaude.ovpn '';
+        config = '' config /etc/nixos/vpn/vpn-work-mvaude.ovpn '';
         autoStart = true;
         updateResolvConf = true;
         # up = "echo ragnaros $nameserver | ${pkgs.openresolv}/sbin/resolvconf -m 0 -a $dev";
